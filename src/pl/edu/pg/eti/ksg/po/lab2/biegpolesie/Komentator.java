@@ -104,7 +104,14 @@ class Komentator {
         slowo_uczestnik = slowo_uczestnik.substring(0, 1).toUpperCase() + slowo_uczestnik.substring(1);
         mow( slowo_uczestnik+" "+u+" przemierza teraz "+rt+". Element nr "+nrElementu+" trasy.");
     }
-    
+
+    public void relacjonuj(int nrElementu, Uczestnik u, DziedzinaZadania dt)
+    {
+        String slowo_uczestnik = odmienUczestnik(u);
+        slowo_uczestnik = slowo_uczestnik.substring(0, 1).toUpperCase() + slowo_uczestnik.substring(1);
+        mow( slowo_uczestnik+" "+u+" dostał zadanie z kategorii "+dt+". Element nr "+nrElementu+" trasy.");
+    }
+
 
     private String odmienUczestnik(Uczestnik u) {
         String slowo_uczestnik = "uczestnik";

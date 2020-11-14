@@ -101,6 +101,7 @@ public class BiegPoLesie {
     private int zmaganiaZElementemTrasy(int indeksElementuTrasy)
     {
         ElementTrasy et = elementyTrasy.get(indeksElementuTrasy);
+
         HashSet<Uczestnik> doUsuniecia = new HashSet<>();
         int liczbaUczestnikow = 0;
         if(et instanceof Teren)
@@ -125,6 +126,19 @@ public class BiegPoLesie {
                 liczbaUczestnikow++;
             }
         }
+        if (et instanceof Zadanie) {
+            Zadanie z = (Zadanie) et;
+            for(Uczestnik u : z.getUczestnicy()) {
+              komentator.relacjonuj(indeksElementuTrasy+1, u, z.getDziedzinaZadania());
+                if (u.rozwiazZadanie(z.getDziedzinaZadania())) {
+                    System.out.println("Rozwiązano zadanie");
+                } else {
+                    System.out.println("Nie rozwiązano zadania");
+                }
+            }
+        }
+
+
         
         for(Uczestnik u : doUsuniecia)
         {
