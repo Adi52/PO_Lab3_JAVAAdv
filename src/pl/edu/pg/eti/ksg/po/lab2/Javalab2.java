@@ -7,7 +7,10 @@ import java.util.Set;
 
 import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.*;
 import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.ludzie.BagiennyBiegacz;
+import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.ludzie.StudentPolitechniki;
+import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.ludzie.StudentWETI;
 import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.roboty.RobotMobilny;
+import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.roboty.TerminatorL;
 
 
 /**
@@ -24,6 +27,12 @@ public class Javalab2 {
         Set<Uczestnik> uczestnicy = new HashSet<>();
         uczestnicy.add(new BagiennyBiegacz("Krzysztof", "Kowalski", Czlowiek.Plec.MEZCZYZNA));
         uczestnicy.add(new RobotMobilny(1));
+        uczestnicy.add(new TerminatorL("", 2));
+
+        uczestnicy.add(new StudentWETI("Adrian", "Bielinski", Czlowiek.Plec.MEZCZYZNA, DziedzinaZadania.INFORMATYKA));
+        uczestnicy.add(new StudentPolitechniki("Anna", "Nowak", Czlowiek.Plec.KOBIETA, DziedzinaZadania.NAUKI_LESNE));
+
+
         
         Scanner scanner = new Scanner(System.in);
 

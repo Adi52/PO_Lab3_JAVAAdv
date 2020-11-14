@@ -35,7 +35,4 @@ public class BagiennyBiegacz extends Czlowiek{
     public boolean rozwiazZadanie(DziedzinaZadania dziedzinaZadania) {
         return humorIUwarunkowaniaOsobiste.nextDouble() <= 0.1;
     }
-    
-    
-    
 }
