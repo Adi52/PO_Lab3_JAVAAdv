@@ -112,6 +112,9 @@ class Komentator {
         mow( slowo_uczestnik+" "+u+" dostał zadanie z kategorii "+dt+". Element nr "+nrElementu+" trasy.");
     }
 
+    public void oznajmijMeta(Uczestnik u) {
+        mow("Uczestnik " + u + " dotarl na mete!");
+    }
 
     private String odmienUczestnik(Uczestnik u) {
         String slowo_uczestnik = "uczestnik";
@@ -133,5 +136,4 @@ class Komentator {
             slowo_pierwszy = "pierwszy";
         return slowo_pierwszy;
     }
-    
 }

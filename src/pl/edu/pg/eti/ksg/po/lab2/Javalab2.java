@@ -31,8 +31,6 @@ public class Javalab2 {
 
         uczestnicy.add(new StudentWETI("Adrian", "Bielinski", Czlowiek.Plec.MEZCZYZNA, DziedzinaZadania.INFORMATYKA));
         uczestnicy.add(new StudentPolitechniki("Anna", "Nowak", Czlowiek.Plec.KOBIETA, DziedzinaZadania.NAUKI_LESNE));
-
-
         
         Scanner scanner = new Scanner(System.in);
 

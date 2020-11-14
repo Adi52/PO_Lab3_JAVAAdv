@@ -17,6 +17,7 @@ public class BiegPoLesie {
     private final List<ElementTrasy> elementyTrasy;
     private final Set<Uczestnik> uczestnicy;
     private final List<Uczestnik> meta;
+    private boolean koniecGry = false;
     
     
     public BiegPoLesie(String nazwa, PrintStream mikrofon, PrintStream przestrzenWLesie) {
@@ -75,7 +76,9 @@ public class BiegPoLesie {
         int licznikTur = 1;
         do
         {
-            komentator.powiadomONowejTurze(licznikTur);
+            if (!koniecGry) {
+                komentator.powiadomONowejTurze(licznikTur);
+            }
             czyPozostaliUczestnicyNaTrasie = false;
             for(int iterator = elementyTrasy.size() - 1; iterator >= 0; iterator--)
             {
@@ -94,7 +97,9 @@ public class BiegPoLesie {
         }
         else
         {
-            meta.add(u); 
+            koniecGry = true;
+            komentator.oznajmijMeta(u);
+            meta.add(u);
         }
     }
         
@@ -128,13 +133,18 @@ public class BiegPoLesie {
         }
         if (et instanceof Zadanie) {
             Zadanie z = (Zadanie) et;
+
             for(Uczestnik u : z.getUczestnicy()) {
-              komentator.relacjonuj(indeksElementuTrasy+1, u, z.getDziedzinaZadania());
-                if (u.rozwiazZadanie(z.getDziedzinaZadania())) {
-                    System.out.println("Rozwiązano zadanie");
+                komentator.relacjonuj(indeksElementuTrasy+1, u, z.getDziedzinaZadania());
+                boolean rezultatZadania = u.rozwiazZadanie(z.getDziedzinaZadania());
+
+                if (rezultatZadania) {
+                    doUsuniecia.add(u);
+                    umiescUczestnikaWElemencieTrasy(u, indeksElementuTrasy + 1);
                 } else {
-                    System.out.println("Nie rozwiązano zadania");
+                    z.getUczestnicywZadaniu().put(u, false);
                 }
+                liczbaUczestnikow++;
             }
         }
 
