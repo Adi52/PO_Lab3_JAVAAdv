@@ -9,8 +9,8 @@ import java.util.Map;
  */
 public class Teren implements ElementTrasy {
 
-    private final RodzajTerenu rodzajTerenu;
-    private Map<Uczestnik,Double> uczestnicyWTerenie = new HashMap<>();
+    RodzajTerenu rodzajTerenu;
+    Map<Uczestnik,Double> uczestnicyWTerenie = new HashMap<>();
 
     public Teren(RodzajTerenu rodzajTerenu) {
         this.rodzajTerenu = rodzajTerenu;

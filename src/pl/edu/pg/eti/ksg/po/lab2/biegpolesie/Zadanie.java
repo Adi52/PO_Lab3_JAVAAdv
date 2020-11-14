@@ -9,8 +9,12 @@ import java.util.Map;
  */
 public class Zadanie implements ElementTrasy {
 
-    private final DziedzinaZadania dziedzinaZadania;
-    private Map<Uczestnik,Double> uczestnicyWTerenie = new HashMap<>();
+    DziedzinaZadania dziedzinaZadania;
+    Map<Uczestnik, Boolean> uczestnicyWZadaniu = new HashMap<>();
+
+    Map<Uczestnik, Boolean> getUczestnicywZadaniu() {
+        return uczestnicyWZadaniu;
+    }
 
     public Zadanie(DziedzinaZadania dziedzinaZadania) {
         this.dziedzinaZadania = dziedzinaZadania;
@@ -18,29 +22,25 @@ public class Zadanie implements ElementTrasy {
 
     @Override
     public Iterable<Uczestnik> getUczestnicy() {
-        return uczestnicyWTerenie.keySet();
+        return uczestnicyWZadaniu.keySet();
     }
 
     public DziedzinaZadania getDziedzinaZadania() {
         return dziedzinaZadania;
     }
 
-    public Map<Uczestnik, Double> getUczestnicyWTerenie() {
-        return uczestnicyWTerenie;
-    }
-
     @Override
     public void dodajUczestnika(Uczestnik u) {
-        uczestnicyWTerenie.put(u, 0.0);
+        uczestnicyWZadaniu.put(u, false);
     }
 
     @Override
     public void usunUczestnika(Uczestnik u) {
-        uczestnicyWTerenie.remove(u);
+        uczestnicyWZadaniu.remove(u);
     }
 
     @Override
     public int getLiczbaUczestnikowNaTrasie() {
-        return uczestnicyWTerenie.size();
+        return uczestnicyWZadaniu.size();
     }
 }

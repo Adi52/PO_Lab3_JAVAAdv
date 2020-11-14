@@ -4,16 +4,10 @@ import java.io.PrintStream;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.BiegPoLesie;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.Czlowiek;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.RodzajTerenu;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.Teren;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.Uczestnik;
+
+import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.*;
 import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.ludzie.BagiennyBiegacz;
 import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.roboty.RobotMobilny;
-
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.DziedzinaZadania;
-import pl.edu.pg.eti.ksg.po.lab2.biegpolesie.Zadanie;
 
 
 /**
@@ -37,6 +31,8 @@ public class Javalab2 {
         System.out.println("1. Górki");
         System.out.println("2. Na przełaj z Matematyką");
         System.out.println("3. Bagienny miks naukowy");
+        System.out.println("4. Stworz swoj bieg");
+
         int wybor = scanner.nextInt();
         
         BiegPoLesie bieg;
@@ -54,6 +50,10 @@ public class Javalab2 {
             case 3:
                 bieg = bagiennyMiks(System.out, System.out);
                 break;
+            case 4:
+                bieg = stworzBieg(System.out, System.out);
+                break;
+
         }
         
         for(Uczestnik u : uczestnicy)
@@ -67,54 +67,87 @@ public class Javalab2 {
     private static BiegPoLesie gorki(PrintStream mikrofon, PrintStream przestrzenWLesie)
     {
         BiegPoLesie gorki_ = new BiegPoLesie("Górki",mikrofon,przestrzenWLesie);
-        
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.DROGA));
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.SCIEZKA));
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.SCIEZKA));
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.NISKI_LAS));
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.FIZYKA));
-//        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
-//        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.NAUKI_LESNE));
-        gorki_.dodajElementTrasy(new Teren(RodzajTerenu.WYSOKI_LAS));
+
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.DROGA));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.SCIEZKA));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.SCIEZKA));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.NISKI_LAS));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.FIZYKA));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.NAUKI_LESNE));
+        gorki_.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.WYSOKI_LAS));
         
         return gorki_;
     }
 
     private static BiegPoLesie naPrzelajZMatematyka(PrintStream mikrofon, PrintStream przestrzenWLesie) {
         BiegPoLesie naPrzelaj = new BiegPoLesie("Na przełaj z matematyką",mikrofon,przestrzenWLesie);
-        
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.DROGA));
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.SCIEZKA));
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.NISKI_LAS));
-//        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.NISKI_LAS));
-//        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.NISKI_LAS));
-//        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
-        naPrzelaj.dodajElementTrasy(new Teren(RodzajTerenu.WYSOKI_LAS));
-        
+
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.DROGA));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.SCIEZKA));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.NISKI_LAS));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.NISKI_LAS));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.NISKI_LAS));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
+        naPrzelaj.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.WYSOKI_LAS));
+
         return naPrzelaj;
     }
 
     private static BiegPoLesie bagiennyMiks(PrintStream mikrofon, PrintStream przestrzenWLesie) {
         BiegPoLesie miks = new BiegPoLesie("Bagienny miks naukowy",mikrofon,przestrzenWLesie);
-        
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.DROGA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.SCIEZKA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.FIZYKA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.INFORMATYKA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.SZTUKA));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.BAGNO));
-//        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.NAUKI_LESNE));
-        miks.dodajElementTrasy(new Teren(RodzajTerenu.WYSOKI_LAS));
-        
+
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.DROGA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.SCIEZKA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.MATEMATYKA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.FIZYKA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.INFORMATYKA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.SZTUKA));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.BAGNO));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(DziedzinaZadania.NAUKI_LESNE));
+        miks.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(RodzajTerenu.WYSOKI_LAS));
+
         return miks;
+    }
+
+    private static BiegPoLesie stworzBieg(PrintStream mikrofon, PrintStream przestrzenWLesie) {
+        BiegPoLesie wlasnyBieg = new BiegPoLesie("Wlasny bieg", mikrofon, przestrzenWLesie);
+
+        System.out.println("Tworzenie wlasnego biegu");
+        System.out.println("________________________");
+        System.out.println("Rodzaje terenu do wybrania:");
+        System.out.println("- DROGA");
+        System.out.println("- SCIEZKA");
+        System.out.println("- WYSOKI_LAS");
+        System.out.println("- NISKI_LAS");
+        System.out.println("- BAGNO");
+        System.out.println("________________________");
+        System.out.println("- MATEMATYKA");
+        System.out.println("- FIZYKA");
+        System.out.println("- SZTUKA");
+        System.out.println("- NAUKI_LESNE");
+        System.out.println("________________________");
+        System.out.println("Wpisz 'start' aby zacząć bieg");
+        Scanner scanner = new Scanner(System.in);
+        String nazwa;
+        while (true) {
+            try {
+                nazwa = scanner.next();
+                if (nazwa.equals("start")) break;
+                wlasnyBieg.dodajElementTrasy(FabrykaElementowTrasy.utworzElementTrasy(nazwa));
+                System.out.println("Dodano obiekt " + nazwa);
+            } catch (BrakTakiegoElementuTrasyException e) {
+                System.out.println("Nie ma takiego obiektu");
+            }
+        }
+        return wlasnyBieg;
     }
     
 }
